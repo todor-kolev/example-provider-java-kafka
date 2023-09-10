@@ -24,9 +24,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.messaging.Message;
 
 @Provider("pactflow-example-provider-java-kafka")
-@PactBroker(scheme = "https", host = "${PACT_BROKER_HOST}",
+@PactBroker(scheme = "https", host = "tekadvisory.pactflow.io",
         consumerVersionSelectors = {@VersionSelector(tag = "master"), @VersionSelector(tag = "prod")},
-        authentication = @PactBrokerAuth(token = "${PACT_BROKER_TOKEN}"))
+        authentication = @PactBrokerAuth(token = "1PDJzb4GL6SNU0_YT4-rXg"))
   public class ProductsKafkaProducerTest {
   private static final Logger LOGGER = LoggerFactory.getLogger(ProductsKafkaProducerTest.class);
 
@@ -51,7 +51,8 @@ import org.springframework.messaging.Message;
 
   @PactVerifyProvider("a product event update")
   public MessageAndMetadata productUpdateEvent() throws JsonProcessingException {
-    ProductEvent product = new ProductEvent("id1", "product name", "product type", "v1", EventType.UPDATED, 15.00);
+    ProductEvent product = new ProductEvent("id1", "product name", "type", "v1", EventType.UPDATED, 15.00, "extraFieldValue");
+//    ProductEvent product = new ProductEvent("id1", "product name", "type", "v1", EventType.UPDATED, 15.00);
     Message<String> message = new ProductMessageBuilder().withProduct(product).build();
 
     return generateMessageAndMetadata(message);
@@ -59,7 +60,8 @@ import org.springframework.messaging.Message;
 
   @PactVerifyProvider("a product created event")
   public MessageAndMetadata productCreatedEvent() throws JsonProcessingException {
-    ProductEvent product = new ProductEvent("id1", "product name", "product type", "v1", EventType.CREATED, 27.00);
+    ProductEvent product = new ProductEvent("id1", "product name", "type", "v1", EventType.CREATED, 27.00, "extraFieldValue");
+//    ProductEvent product = new ProductEvent("id1", "product name", "type", "v1", EventType.CREATED, 27.00);
     Message<String> message = new ProductMessageBuilder().withProduct(product).build();
 
     return generateMessageAndMetadata(message);
