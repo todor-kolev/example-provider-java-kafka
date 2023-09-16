@@ -51,7 +51,7 @@ import org.springframework.messaging.Message;
 
   @PactVerifyProvider("a product event update")
   public MessageAndMetadata productUpdateEvent() throws JsonProcessingException {
-    ProductEvent product = new ProductEvent("id1", "product name", "type", "v1", EventType.UPDATED, 15.00, "extraFieldValue");
+    ProductEvent product = new ProductEvent("id1", "product name", "type", "v1", EventType.UPDATED, 15.00, "optParamValue");
 //    ProductEvent product = new ProductEvent("id1", "product name", "type", "v1", EventType.UPDATED, 15.00);
     Message<String> message = new ProductMessageBuilder().withProduct(product).build();
 
@@ -60,7 +60,7 @@ import org.springframework.messaging.Message;
 
   @PactVerifyProvider("a product created event")
   public MessageAndMetadata productCreatedEvent() throws JsonProcessingException {
-    ProductEvent product = new ProductEvent("id1", "product name", "type", "v1", EventType.CREATED, 27.00, "extraFieldValue");
+    ProductEvent product = new ProductEvent("id1", "product name", "type", "v1", EventType.CREATED, 27.00, null);
 //    ProductEvent product = new ProductEvent("id1", "product name", "type", "v1", EventType.CREATED, 27.00);
     Message<String> message = new ProductMessageBuilder().withProduct(product).build();
 
