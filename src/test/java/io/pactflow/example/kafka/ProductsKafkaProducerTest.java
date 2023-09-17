@@ -51,7 +51,7 @@ import org.springframework.messaging.Message;
 
   @PactVerifyProvider("a product created event")
   public MessageAndMetadata productCreatedEvent() throws JsonProcessingException {
-    ProductEvent product = new ProductEvent("id1", "product name", "type", "v1", EventType.CREATED, 27.00, "optParamValue");
+    ProductEvent product = new ProductEvent("id1", "product name", "type", "v1", EventType.CREATED, 27.00, null);
     Message<String> message = new ProductMessageBuilder().withProduct(product).build();
 
     return generateMessageAndMetadata(message);
@@ -59,7 +59,7 @@ import org.springframework.messaging.Message;
 
   @PactVerifyProvider("a product created event with optional field")
   public MessageAndMetadata productCreatedEventWithOptParam() throws JsonProcessingException {
-    ProductEvent product = new ProductEvent("id1", "product name", "type", "v1", EventType.CREATED, 27.00, null);
+    ProductEvent product = new ProductEvent("id1", "product name", "type", "v1", EventType.CREATED, 27.00, "optParamValue");
     Message<String> message = new ProductMessageBuilder().withProduct(product).build();
 
     return generateMessageAndMetadata(message);
