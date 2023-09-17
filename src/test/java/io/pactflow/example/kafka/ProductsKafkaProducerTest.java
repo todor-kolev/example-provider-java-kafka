@@ -49,19 +49,17 @@ import org.springframework.messaging.Message;
         System.getenv("PACT_BROKER_PUBLISH_VERIFICATION_RESULTS") == null ? "false" : "true");
   }
 
-  @PactVerifyProvider("a product event update")
-  public MessageAndMetadata productUpdateEvent() throws JsonProcessingException {
-    ProductEvent product = new ProductEvent("id1", "product name", "type", "v1", EventType.UPDATED, 15.00, "optParamValue");
-//    ProductEvent product = new ProductEvent("id1", "product name", "type", "v1", EventType.UPDATED, 15.00);
+  @PactVerifyProvider("a product created event")
+  public MessageAndMetadata productCreatedEvent() throws JsonProcessingException {
+    ProductEvent product = new ProductEvent("id1", "product name", "type", "v1", EventType.CREATED, 27.00, "optParamValue");
     Message<String> message = new ProductMessageBuilder().withProduct(product).build();
 
     return generateMessageAndMetadata(message);
   }
 
   @PactVerifyProvider("a product created event with optional field")
-  public MessageAndMetadata productCreatedEvent() throws JsonProcessingException {
+  public MessageAndMetadata productCreatedEventWithOptParam() throws JsonProcessingException {
     ProductEvent product = new ProductEvent("id1", "product name", "type", "v1", EventType.CREATED, 27.00, null);
-//    ProductEvent product = new ProductEvent("id1", "product name", "type", "v1", EventType.CREATED, 27.00);
     Message<String> message = new ProductMessageBuilder().withProduct(product).build();
 
     return generateMessageAndMetadata(message);
