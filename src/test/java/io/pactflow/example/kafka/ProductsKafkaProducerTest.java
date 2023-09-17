@@ -58,7 +58,7 @@ import org.springframework.messaging.Message;
     return generateMessageAndMetadata(message);
   }
 
-  @PactVerifyProvider("a product created event")
+  @PactVerifyProvider("a product created event with optional field")
   public MessageAndMetadata productCreatedEvent() throws JsonProcessingException {
     ProductEvent product = new ProductEvent("id1", "product name", "type", "v1", EventType.CREATED, 27.00, null);
 //    ProductEvent product = new ProductEvent("id1", "product name", "type", "v1", EventType.CREATED, 27.00);
