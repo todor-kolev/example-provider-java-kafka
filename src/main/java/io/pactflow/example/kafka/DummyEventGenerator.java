@@ -29,8 +29,6 @@ public class DummyEventGenerator {
 					"v1",
 					faker.options().option(EventType.class),
 					Double.parseDouble(faker.commerce().price())
-					,
-					"extraFieldValue"
 			);
 
 			log.info("sending random product event to stream: {}", event);

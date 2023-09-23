@@ -15,18 +15,15 @@ class ProductEvent {
   private String version;
   private Double price;
   private EventType event;
-  private String optParam;
 
   ProductEvent() {}
 
-//  ProductEvent(String id, String name, String type, String version, EventType event, Double price) {
-  ProductEvent(String id, String name, String type, String version, EventType event, Double price, String optParam) {
+  ProductEvent(String id, String name, String type, String version, EventType event, Double price) {
     this.id = id;
     this.name = name;
     this.type = type;
     this.version = version;
     this.event = event;
     this.price = price;
-    this.optParam = optParam;
   }
 }
